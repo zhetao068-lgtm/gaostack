@@ -10,7 +10,7 @@
 - 通过官方公众号接口逐篇发布，保存提交编号和公开链接。图文所需权限以账号后台为准。
 - 账号密钥仅在服务端使用，稿件库仅供部署者访问。发表默认关闭，启用后也需要逐篇确认。
 
-**需要帮忙上线？** [咨询部署、迁移或定制](docs/paid-services.md)。
+**喜欢稿栈？** [了解如何支持项目](docs/support.md)。
 
 ## 运行和部署
 
@@ -37,7 +37,7 @@
 - Submit articles individually through the official WeChat API. Track the submission ID and retrieve the public article link after WeChat confirms publication.
 - Keep drafts behind HTTPS and password authentication. WeChat credentials stay on the server, and publishing is disabled by default.
 
-**Need help getting started?** [Ask about paid setup, migration, or custom development](docs/paid-services.md).
+**Find GaoStack useful?** [Support the project](docs/support.md).
 
 ### Build and deploy
 
