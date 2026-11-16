@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="稿栈是一套可自托管的公众号稿件与发布回执工作台">
+  <title>稿栈 GaoStack</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/client.js" type="module"></script>
+</head>
+<body>
+  <header class="top"><div class="brand"><span class="mark" aria-hidden="true">稿</span> 稿栈 GaoStack</div>
+    <span class="private" id="connection">检查微信配置</span>
+  </header>
+  <main data-mobile-view="library">
+    <section class="workbench">
+      <aside class="library">
+        <div class="panel-head"><div><h2>稿件库</h2><small id="listCount">正在读取…</small></div>
+          <button id="newDraft" class="primary">新建稿件</button></div>
+        <p id="libraryFeedback" role="status" hidden></p>
+        <label class="sr" for="search">搜索稿件</label>
+        <input id="search" type="search" placeholder="搜索标题、作者或主题">
+        <div class="tabs" aria-label="筛选状态">
+          <button class="current" data-filter="all">全部</button><button data-filter="draft">草稿</button>
+          <button data-filter="queued">排期</button><button data-filter="rehearsed">演练</button>
+        </div>
+        <div id="articles" class="articles" aria-live="polite"></div>
+        <div class="library-footer"><button id="importBtn" class="quiet">导入稿件</button><button id="sampleBtn" class="quiet">载入示例</button></div>
+        <input id="importFile" type="file" accept=".md,.txt,.json,text/plain,application/json" hidden>
+      </aside>
+      <section class="editor">
+        <div class="panel-head"><div><h2 id="editorHeading">新建稿件</h2><small id="statusLine">编辑完成后保存到云端</small></div>
+          <div class="editor-tools">
+            <button id="mobileSave" class="primary" type="submit" form="draftForm">保存</button>
+            <button id="exportBtn" class="quiet" type="button">导出 JSON</button>
+          </div></div>
+        <form id="draftForm">
+          <label>文章标题<input id="title" maxlength="64" required placeholder="给文章起个标题"></label>
+          <div class="field-row">
+            <label>作者<input id="author" maxlength="16" required placeholder="填写公开署名" autocomplete="off"></label>
+            <label>主题<input id="topic" maxlength="40" placeholder="例如：生活观察"></label>
+            <label>创作来源<select id="source"><option value="manual">手动撰写</option><option value="ai">AI 生成</option><option value="mixed">AI 辅助</option></select></label>
+          </div>
+          <label>摘要 <small>选填 · 120 字以内</small><input id="summary" maxlength="120" placeholder="一句话说明这篇文章"></label>
+          <div class="editor-tabs"><button type="button" class="current" id="editTab">编辑正文</button>
+            <button type="button" id="previewTab">阅读预览</button><small id="wordCount">0 字</small></div>
+          <label class="sr" for="body">正文</label><textarea id="body" maxlength="50000" required placeholder="在这里粘贴或输入正文。"></textarea>
+          <article id="preview" class="preview" hidden>
+            <h3 id="previewTitle"></h3>
+            <p id="previewAuthor" class="preview-meta" hidden></p>
+            <p id="previewSummary" class="preview-summary" hidden></p>
+            <img id="previewCover" alt="文章配图" hidden>
+            <div id="previewBody" class="preview-copy"></div>
+          </article>
+          <div class="cover"><img id="coverPreview" alt="文章配图" hidden><div><strong>正文配图</strong><small id="coverLabel">尚未添加配图</small></div>
+            <button id="pickCover" type="button" class="quiet">选择图片</button><button id="clearCover" type="button" class="quiet" disabled>移除</button></div>
+          <input id="coverFile" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+          <div class="actions"><button id="saveBtn" class="primary" type="submit">保存稿件</button>
+            <button id="splitBtn" type="button" disabled>拆分长文</button>
+            <button id="cancelBtn" type="button" hidden>取消排期</button>
+            <button id="copyBtn" type="button" hidden>复制为新稿</button>
+            <button id="publishBtn" class="primary" type="button" hidden>发布到公众号</button>
+            <button id="receiptBtn" type="button" hidden>查询回执</button></div>
+        </form>
+        <p id="publication" role="status"></p>
+        <p id="feedback" role="status" aria-live="polite"></p>
+      </section>
+      <section class="schedule" aria-labelledby="scheduleHeading">
+        <h2 id="scheduleHeading">发布记录</h2>
+        <div class="schedule-notice"><strong>定时已关闭</strong><p>可以编辑和保存稿件，定时发布不会执行。</p></div>
+        <div class="schedule-tabs" aria-label="查看记录">
+          <button type="button" data-record="publication" aria-pressed="true">公众号回执</button>
+          <button type="button" data-record="queued" aria-pressed="false">历史排期</button>
+          <button type="button" data-record="rehearsed" aria-pressed="false">查看演练</button>
+        </div>
+        <h3 id="recordHeading">待执行队列</h3>
+        <div id="scheduleRows" aria-live="polite"><p class="empty">正在读取记录…</p></div>
+        <p id="scheduleFeedback" role="status" hidden></p>
+      </section>
+    </section>
+  </main>
+  <nav class="mobile-nav" aria-label="工作台">
+    <button type="button" data-view="library" aria-current="page"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6m-6 4h6"/></svg>稿件</button>
+    <button type="button" data-view="editor"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m4 16-1 5 5-1L21 7l-4-4L4 16Zm10-10 4 4"/></svg>编辑</button>
+    <button type="button" data-view="schedule"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></svg>记录</button>
+  </nav>
+  <dialog id="splitDialog">
+    <h2>拆分长文</h2><p>按段落和句末分篇。预览并确认后另存，原稿保留。</p>
+    <div class="actions"><label>每篇约 <select id="splitSize"><option>400</option><option selected>800</option><option>1200</option><option>1600</option><option>2000</option></select> 字</label>
+      <button id="splitPreview" type="button">生成预览</button></div>
+    <div id="splitParts"></div><p id="splitFeedback" role="status"></p>
+    <div class="actions"><button class="primary" id="splitSave" type="button" disabled>另存拆分稿</button><button type="button" data-close="splitDialog">关闭</button></div>
+  </dialog>
+</body></html>

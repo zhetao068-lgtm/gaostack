@@ -1,0 +1,15 @@
+name = "gaostack"
+main = "dist/server/index.js"
+compatibility_date = "2025-11-01"
+workers_dev = false
+preview_urls = false
+
+[vars]
+APP_ORIGIN = "https://editor.example.com"
+ENABLE_PUBLISH = "false"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "gaostack"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "drizzle"

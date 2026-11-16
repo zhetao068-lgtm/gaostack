@@ -1,0 +1,9 @@
+dist/
+.wrangler/
+node_modules/
+.dev.vars*
+.env*
+*.sqlite*
+*.db
+*.log
+wrangler.toml
