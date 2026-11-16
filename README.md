@@ -26,8 +26,10 @@
 
 - [一次点击，如何避免发两次](docs/01-publish-once.md)
 - [公开代码，为什么还需要锁住工作台](docs/02-private-runtime.md)
+- [长文拆分如何保留每个字符](docs/03-lossless-splitting.md)
+- [为什么请求体上限要按字节算](docs/04-request-byte-limits.md)
 
-两篇是基于仓库实现和本地测试的工程文章。安全边界与部署注意事项见 [SECURITY.md](SECURITY.md)。
+这些是基于仓库实现和本地测试的工程文章。安全边界与部署注意事项见 [SECURITY.md](SECURITY.md)。
 
 ## English
 
@@ -55,5 +57,7 @@ The notes below are currently written in Chinese:
 
 - [How GaoStack prevents duplicate submissions](docs/01-publish-once.md)
 - [Why a public repository still needs a private workspace](docs/02-private-runtime.md)
+- [How splitting preserves the original text](docs/03-lossless-splitting.md)
+- [Why request size limits use bytes](docs/04-request-byte-limits.md)
 
 See [SECURITY.md](SECURITY.md) for deployment safeguards and reporting security issues.
