@@ -1,8 +1,10 @@
 # 稿栈 GaoStack
 
-**给公众号编辑的私有稿件工作台。** 手机和电脑都能写稿、换封面、预览正文。接入有发布权限的公众号后，可逐篇提交并查微信回执。
+[中文](#中文) | [English](#english)
 
-GaoStack is a self-hosted editorial workspace for WeChat Official Accounts. It keeps drafts private and records the outcome of individual submissions.
+## 中文
+
+**给公众号编辑的私有稿件工作台。** 手机和电脑都能写稿、换封面、预览正文。接入有发布权限的公众号后，可逐篇提交并查微信回执。
 
 - 支持导入 TXT、Markdown 和 JSON，校验长文拆分前后是否一致。
 - 通过官方公众号接口逐篇发布，保存提交编号和公开链接。图文所需权限以账号后台为准。
@@ -24,3 +26,30 @@ GaoStack is a self-hosted editorial workspace for WeChat Official Accounts. It k
 - [公开代码，为什么还需要锁住工作台](docs/02-private-runtime.md)
 
 两篇是基于仓库实现和本地测试的工程文章。安全边界与部署注意事项见 [SECURITY.md](SECURITY.md)。
+
+## English
+
+**GaoStack is a self-hosted editorial workspace for WeChat Official Accounts.** Write and preview articles, add covers, and check publication results from a phone or computer.
+
+- Import plain text, Markdown, or JSON. Split long articles without losing any text.
+- Submit articles individually through the official WeChat API. Track the submission ID and retrieve the public article link after WeChat confirms publication.
+- Keep drafts behind HTTPS and password authentication. WeChat credentials stay on the server, and publishing is disabled by default.
+
+### Build and deploy
+
+1. Install Node.js 22.13 or newer. Run `npm run build` and `npm test`.
+2. Create a Cloudflare D1 database for the Worker. Copy `wrangler.example.toml` to `wrangler.toml`, enter the database ID and an HTTPS domain you control, and configure the Worker route. Keep your populated configuration out of version control.
+3. Set the `ACCESS_PASSWORD` deployment secret to a strong, randomly generated password of at least 32 characters. Use letters, numbers, hyphens, or underscores. In the browser sign-in prompt, enter `editor` as the username.
+4. Apply the migrations in `drizzle/` with Wrangler and deploy the build. Rate-limit failed sign-ins at the edge. For a team deployment, use an identity gateway.
+5. To enable publication, set the server secrets `WECHAT_APP_ID` and `WECHAT_APP_SECRET`, set `ENABLE_PUBLISH` to `true`, and redeploy. Check the account's API permissions and server IP allowlist in WeChat first. Each article still requires confirmation.
+
+The interface and API both require authentication. GaoStack does not load analytics, trackers, or external fonts. Drafts and covers are stored in your database. Downloaded drafts are saved on the visitor's device.
+
+### Engineering notes
+
+The notes below are currently written in Chinese:
+
+- [How GaoStack prevents duplicate submissions](docs/01-publish-once.md)
+- [Why a public repository still needs a private workspace](docs/02-private-runtime.md)
+
+See [SECURITY.md](SECURITY.md) for deployment safeguards and reporting security issues.
