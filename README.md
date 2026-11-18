@@ -30,6 +30,8 @@
 - [为什么请求体上限要按字节算](docs/04-request-byte-limits.md)
 - [封面上传前，浏览器做了什么](docs/05-cover-processing.md)
 - [纯文本稿件如何转换成微信图文](docs/06-plain-text-to-wechat.md)
+- [写接口为何检查请求来源](docs/07-write-request-origin.md)
+- [拒绝访问时，响应头也需要保护信息](docs/08-private-response-headers.md)
 
 这些是基于仓库实现和本地测试的工程文章。安全边界与部署注意事项见 [SECURITY.md](SECURITY.md)。
 
@@ -63,5 +65,7 @@ The notes below are currently written in Chinese:
 - [Why request size limits use bytes](docs/04-request-byte-limits.md)
 - [How the browser processes cover images](docs/05-cover-processing.md)
 - [How plain text becomes a WeChat article](docs/06-plain-text-to-wechat.md)
+- [Why writes check the request origin](docs/07-write-request-origin.md)
+- [Privacy headers on rejected requests](docs/08-private-response-headers.md)
 
 See [SECURITY.md](SECURITY.md) for deployment safeguards and reporting security issues.
