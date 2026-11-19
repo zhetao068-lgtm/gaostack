@@ -32,6 +32,8 @@
 - [纯文本稿件如何转换成微信图文](docs/06-plain-text-to-wechat.md)
 - [写接口为何检查请求来源](docs/07-write-request-origin.md)
 - [拒绝访问时，响应头也需要保护信息](docs/08-private-response-headers.md)
+- [编辑器如何发现未保存的改动](docs/09-unsaved-editor-changes.md)
+- [文档更新也经过同一条检查流水线](docs/10-documentation-ci.md)
 
 这些是基于仓库实现和本地测试的工程文章。安全边界与部署注意事项见 [SECURITY.md](SECURITY.md)。
 
@@ -67,5 +69,7 @@ The notes below are currently written in Chinese:
 - [How plain text becomes a WeChat article](docs/06-plain-text-to-wechat.md)
 - [Why writes check the request origin](docs/07-write-request-origin.md)
 - [Privacy headers on rejected requests](docs/08-private-response-headers.md)
+- [Detecting unsaved editor changes](docs/09-unsaved-editor-changes.md)
+- [How documentation changes run through CI](docs/10-documentation-ci.md)
 
 See [SECURITY.md](SECURITY.md) for deployment safeguards and reporting security issues.
