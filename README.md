@@ -34,6 +34,8 @@
 - [拒绝访问时，响应头也需要保护信息](docs/08-private-response-headers.md)
 - [编辑器如何发现未保存的改动](docs/09-unsaved-editor-changes.md)
 - [文档更新也经过同一条检查流水线](docs/10-documentation-ci.md)
+- [一个忙碌标记如何约束界面操作](docs/11-ui-operation-guard.md)
+- [导入文件为何先进入编辑器](docs/12-import-before-save.md)
 
 这些是基于仓库实现和本地测试的工程文章。安全边界与部署注意事项见 [SECURITY.md](SECURITY.md)。
 
@@ -71,5 +73,7 @@ The notes below are currently written in Chinese:
 - [Privacy headers on rejected requests](docs/08-private-response-headers.md)
 - [Detecting unsaved editor changes](docs/09-unsaved-editor-changes.md)
 - [How documentation changes run through CI](docs/10-documentation-ci.md)
+- [Guarding asynchronous UI operations](docs/11-ui-operation-guard.md)
+- [Why imported files open in the editor first](docs/12-import-before-save.md)
 
 See [SECURITY.md](SECURITY.md) for deployment safeguards and reporting security issues.
