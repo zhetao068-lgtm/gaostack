@@ -36,6 +36,8 @@
 - [文档更新也经过同一条检查流水线](docs/10-documentation-ci.md)
 - [一个忙碌标记如何约束界面操作](docs/11-ui-operation-guard.md)
 - [导入文件为何先进入编辑器](docs/12-import-before-save.md)
+- [构建脚本怎样把工作台装进一个入口](docs/13-worker-build-entry.md)
+- [为什么已有密钥还需要发表开关](docs/14-publish-feature-gate.md)
 
 这些是基于仓库实现和本地测试的工程文章。安全边界与部署注意事项见 [SECURITY.md](SECURITY.md)。
 
@@ -75,5 +77,7 @@ The notes below are currently written in Chinese:
 - [How documentation changes run through CI](docs/10-documentation-ci.md)
 - [Guarding asynchronous UI operations](docs/11-ui-operation-guard.md)
 - [Why imported files open in the editor first](docs/12-import-before-save.md)
+- [How the Worker build creates one entrypoint](docs/13-worker-build-entry.md)
+- [Why publishing needs an explicit switch](docs/14-publish-feature-gate.md)
 
 See [SECURITY.md](SECURITY.md) for deployment safeguards and reporting security issues.
